@@ -7,8 +7,8 @@ import argparse, socket, time
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--host", default="10.255.255.1")  # 보통 응답이 없는 테스트용 주소 대역
-    ap.add_argument("--port", type=int, default=81)
+    ap.add_argument("--host", default="127.0.0.1")  # 보통 응답이 없는 테스트용 주소 대역
+    ap.add_argument("--port", type=int, default=8081)
     ap.add_argument("--timeout", type=float, default=1.0)
     args = ap.parse_args()
 

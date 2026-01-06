@@ -20,7 +20,7 @@ class Handler(BaseHTTPRequestHandler):
         u = urlparse(self.path)
         if u.path == "/health":
             return self._send(200, {"ok": True})
-        if u.path == "/hello":
+        if u.path == "/hello": 
             q = parse_qs(u.query)
             name = (q.get("name") or ["world"])[0]
             return self._send(200, {"message": f"hello {name}"})

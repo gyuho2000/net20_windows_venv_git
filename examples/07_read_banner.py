@@ -8,15 +8,15 @@ import argparse, socket
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--host", default="example.com")
+    ap.add_argument("--host", default="google.co.kr")
     ap.add_argument("--port", type=int, default=80)  # http는 평문이라 읽을 수 있음
-    ap.add_argument("--timeout", type=float, default=2.0)
+    ap.add_argument("--timeout", type=float, default=5.0)
     args = ap.parse_args()
 
     with socket.create_connection((args.host, args.port), timeout=args.timeout) as s:
         s.settimeout(args.timeout)
         # HTTP는 배너를 먼저 주지 않으므로, 간단한 요청을 보내고 응답 첫 줄을 읽어봄
-        s.sendall(b"GET / HTTP/1.1\r\nHost: example.com\r\nConnection: close\r\n\r\n")
+        s.sendall(b"POST / HTTP/1.1\r\nHost: google.co.kr\r\nConnection: close\r\n\r\n")
         data = s.recv(200)
         print("received(bytes):", len(data))
         print(data.decode("utf-8", errors="replace"))
